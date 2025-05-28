@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recess-order"
+  ],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "order/properties-order": null,
+    "order/properties-alphabetical-order": null,
+    "custom-property-empty-line-before": ["always", { 
+      "except": ["after-custom-property", "first-nested"],
+      "ignore": ["after-comment"] 
+    }]
+  }
+}
