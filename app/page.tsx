@@ -1,7 +1,11 @@
+import { Headling } from "@/components";
+
 export default function Home() {
   return (
     <div>
-      Привет, мир!
+      <Headling tag="h1">Привет, Мир!</Headling>
+      <Headling tag="h2">Привет, Мир!</Headling>
+      <Headling tag="h3">Привет, Мир!</Headling>
     </div>
   );
 }
