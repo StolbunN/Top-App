@@ -3,9 +3,12 @@
   --background-section: #f1f1f3;
   --foreground: #59595a;
   --primary: #ff9500;
+  --primary-hover: #da7f00;
   --black: #262626;
-  --black-section: #333;
+  --black-light: #333;
   --white: #fff;
+  --gray: #f1f1f3;
+  --gray-light: #fcfcfd;
   --red: #FC836D;
   --green: #1DC37E;
   --green-light: #C8F8E4; 
