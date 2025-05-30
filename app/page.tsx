@@ -8,7 +8,11 @@ export default function Home() {
       <Headling tag="h2">Привет, Мир!</Headling>
       <Headling tag="h3">Привет, Мир!</Headling>
       <Button appearance="primary">Primary</Button>
+      <Button appearance="primary" arrow="right">Primary</Button>
+      <Button appearance="primary" arrow="down">Primary</Button>
       <Button>Ghost</Button>
+      <Button arrow="right">Ghost</Button>
+      <Button arrow="down">Ghost</Button>
     </div>
   );
 }

@@ -30,3 +30,17 @@
 .ghost:hover {
   background-color: var(--gray);
 }
+
+.arrow {
+  display: inline-block;
+  margin-left: 11px;
+}
+
+.primary .arrow {
+  fill: var(--white);
+}
+
+.down {
+  transform: rotate(90deg);
+  transition: all .3s;
+}
