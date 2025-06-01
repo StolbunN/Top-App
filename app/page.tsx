@@ -1,4 +1,4 @@
-import { Headling, Button, Paragraph } from "@/components";
+import { Headling, Button, Paragraph, Tag } from "@/components";
 
 
 export default function Home() {
@@ -22,6 +22,11 @@ export default function Home() {
       <Paragraph size="l">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, tempore aperiam. Voluptatem sed, facilis, reiciendis sapiente asperiores accusantium distinctio mollitia ullam nam eius doloremque consequatur eaque accusamus cupiditate vel autem!
       </Paragraph>
+      <Tag>Тег</Tag>
+      <Tag color="grey" size="l">Тег</Tag>
+      <Tag color="green">Тег</Tag>
+      <Tag color="red" size="l">Тег</Tag>
+      <Tag color="primary">Тег</Tag>
     </div>
   );
 }
