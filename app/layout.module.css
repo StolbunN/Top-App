@@ -1,8 +1,8 @@
 .wrapper {
   display: grid;
-  grid-template-columns: auto 230px minmax(320px, 1440px) auto;
+  grid-template-columns: auto 230px minmax(320px, 1340px) auto;
   grid-auto-rows: auto 1fr auto;
-  gap: 10px 25px;
+  column-gap: 30px;
   min-height: 100vh;
   grid-template-areas: 
     ". header body ."
@@ -26,14 +26,14 @@
   grid-area: footer;
 }
 
-@media (width <= 768px) {
+@media (width < 768px) {
   .wrapper {
     grid-template-columns: auto minmax(320px, 1fr) auto;
     grid-template-areas: 
     ". header ."
     ". body ."
     'footer footer footer';
-    gap: 10px;
+    column-gap: 10px;
   }
 
   .sidebar {

@@ -1,0 +1,43 @@
+.footer {
+  background: var(--primary);
+  color: var(--white);
+  padding: 25px 30px;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  align-items: center;
+}
+
+.container a {
+  transition: all 0.2s;
+}
+
+.container a:hover {
+  color: var(--foreground);
+}
+
+@media (width < 992px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
+  }
+
+  .copyright {
+    grid-row: 3 / 4;
+    text-align: center;
+  }
+}
+
+@media (width < 768px) {
+  .footer {
+    padding: 25px 10px;
+  }
+}

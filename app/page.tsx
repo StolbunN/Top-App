@@ -19,13 +19,13 @@ export default function Home() {
       <Button arrow="right">Ghost</Button>
       <Button arrow="down">Ghost</Button>
       <Paragraph size="s">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, tempore aperiam. Voluptatem sed, facilis, reiciendis sapiente asperiores accusantium distinctio mollitia ullam nam eius doloremque consequatur eaque accusamus cupiditate vel autem!
+        Маленький текст
       </Paragraph>
       <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, tempore aperiam. Voluptatem sed, facilis, reiciendis sapiente asperiores accusantium distinctio mollitia ullam nam eius doloremque consequatur eaque accusamus cupiditate vel autem!
+        Средний (стандартный) текст
       </Paragraph>
       <Paragraph size="l">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, tempore aperiam. Voluptatem sed, facilis, reiciendis sapiente asperiores accusantium distinctio mollitia ullam nam eius doloremque consequatur eaque accusamus cupiditate vel autem!
+        Большой текст
       </Paragraph>
       <Tag>Тег</Tag>
       <Tag color="grey" size="l">Тег</Tag>
