@@ -1,0 +1,15 @@
+.stars {
+  display: inline-flex;
+}
+
+.star:not(:last-child) {
+  padding-right: 5px;
+}
+
+.filled {
+  fill: var(--primary);
+}
+
+.editable {
+  cursor: pointer;
+}

@@ -1,7 +1,12 @@
+"use client";
+
 import { Headling, Button, Paragraph, Tag } from "@/components";
+import { Rating } from "@/components/Rating/Rating";
+import { useState } from "react";
 
 
 export default function Home() {
+  const [rating, setRating] = useState<number>(4);
   return (
     <div>
       <Headling tag="h1">Привет, Мир!</Headling>
@@ -27,6 +32,7 @@ export default function Home() {
       <Tag color="green">Тег</Tag>
       <Tag color="red" size="l">Тег</Tag>
       <Tag color="primary">Тег</Tag>
+      <Rating rating={rating} setRating={setRating} isEditable></Rating>
     </div>
   );
 }
