@@ -1,6 +1,6 @@
 "use client";
 
-import { Headling, Button, Paragraph, Tag } from "@/components";
+import { Heading, Button, Paragraph, Tag } from "@/components";
 import { Rating } from "@/components/Rating/Rating";
 import { useState } from "react";
 
@@ -9,9 +9,9 @@ export default function Home() {
   const [rating, setRating] = useState<number>(4);
   return (
     <div>
-      <Headling tag="h1">Привет, Мир!</Headling>
-      <Headling tag="h2">Привет, Мир!</Headling>
-      <Headling tag="h3">Привет, Мир!</Headling>
+      <Heading tag="h1">Привет, Мир!</Heading>
+      <Heading tag="h2">Привет, Мир!</Heading>
+      <Heading tag="h3">Привет, Мир!</Heading>
       <Button appearance="primary">Primary</Button>
       <Button appearance="primary" arrow="right">Primary</Button>
       <Button appearance="primary" arrow="down">Primary</Button>

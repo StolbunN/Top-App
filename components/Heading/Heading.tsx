@@ -1,7 +1,7 @@
-import { HeadlingProps } from "./Headling.props";
-import styles from "./Headling.module.css";
+import { HeadingProps } from "./Heading.props";
+import styles from "./Heading.module.css";
 
-export function Headling ({tag, children}: HeadlingProps) {
+export function Heading ({tag, children}: HeadingProps) {
   switch(tag) {
     case "h1": {
       return <h1 className={styles.h1}>{children}</h1>;

@@ -16,6 +16,7 @@ const eslintConfig = [
       semi: ["warn"],
       quotes: ["error", "double"],
       "prefer-template": ["warn"],
+      allowInterfaces: 'with-single-extends',
     },
   }),
 ];
