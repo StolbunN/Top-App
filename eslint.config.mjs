@@ -16,7 +16,13 @@ const eslintConfig = [
       semi: ["warn"],
       quotes: ["error", "double"],
       "prefer-template": ["warn"],
-      allowInterfaces: 'with-single-extends',
+      // allowInterfaces: 'with-single-extends',
+      "@typescript-eslint/no-empty-interface": [
+        "warn",
+        {
+          "allowSingleExtends": true
+        }
+      ]
     },
   }),
 ];
