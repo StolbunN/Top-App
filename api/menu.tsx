@@ -8,6 +8,6 @@ export async function getMenu(firstCategory: number): Promise<MenuItem[]> {
       firstCategory
     }),
     headers: new Headers({"content-type": "application/json"})
-  })
+  });
   return res.json();
 }

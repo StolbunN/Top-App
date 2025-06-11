@@ -1,5 +1,5 @@
-import { JSX } from 'react';
-import { TopLevelCategory } from './page.interface';
+import { JSX } from "react";
+import { TopLevelCategory } from "./page.interface";
 
 export interface PageItem {
 	alias: string;
