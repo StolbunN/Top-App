@@ -15,14 +15,14 @@ const eslintConfig = [
     rules: {
       semi: ["warn"],
       quotes: ["error", "double"],
-      "prefer-template": ["warn"],
-      // allowInterfaces: 'with-single-extends',
+      // "prefer-template": ["warn"],
       "@typescript-eslint/no-empty-interface": [
         "warn",
         {
           "allowSingleExtends": true
         }
-      ]
+      ],
+      "@typescript-eslint/no-empty-object-type": "off"
     },
   }),
 ];

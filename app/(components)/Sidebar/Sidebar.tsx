@@ -9,7 +9,7 @@ export async function Sidebar({className, ...props}: SidebarProps) {
     <nav {...props} className={cn(styles.Sidebar, className)}>
       <ul>
         {menu && menu.map(item => {
-          return (<li>{item._id.secondCategory}</li>)
+          return (<li key={`${item._id.secondCategory}${0}`}>{item._id.secondCategory}</li>);
         })}
       </ul>
       <hr />
