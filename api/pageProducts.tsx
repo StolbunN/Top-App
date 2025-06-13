@@ -2,7 +2,10 @@ import { API } from "@/app/api";
 import { TopPageModel } from "@/interfaces/page.interface";
 
 export async function getPageProducts(alias: string): Promise<TopPageModel | null> {
-  const res = await fetch(`${API.topPage.byAlias}/${alias}`);
+  const res = await fetch(`${API.topPage.byAlias}/${alias}`, {
+    next: {revalidate: 10}
+  });
+  console.log("Ревалидация getPageProducts");
   if(!res.ok) {
     return null;
   }
