@@ -1,19 +1,11 @@
 import { SidebarProps } from "./Sidebar.props";
 import styles from "./Sidebar.module.css";
 import cn from "classnames";
-import { getMenu } from "@/api/menu";
 
-export async function Sidebar({className, ...props}: SidebarProps) {
-  const menu = await getMenu(0);
+export async function Sidebar({className, children, ...props}: SidebarProps) {
   return (
-    <nav {...props} className={cn(styles.Sidebar, className)}>
-      <ul>
-        {menu && menu.map(item => {
-          return (<li key={`${item._id.secondCategory}${0}`}>{item._id.secondCategory}</li>);
-        })}
-      </ul>
-      <hr />
-      <div>{menu.length}</div>
-    </nav>
+    <div {...props} className={cn(styles.Sidebar, className)}>
+      {children}
+    </div>
   );
 }
