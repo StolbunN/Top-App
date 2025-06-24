@@ -11,6 +11,5 @@ export async function getMenu(firstCategory: TopLevelCategory): Promise<MenuItem
     headers: new Headers({"content-type": "application/json"}),
     next: {revalidate: 10}
   });
-  console.log("Ревалидация getMenu");
   return res.json();
 }

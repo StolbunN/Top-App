@@ -32,12 +32,8 @@
   align-items: center;
 }
 
-.first-level__link--active .first-level__link-content {
-  margin-bottom: 14px;
-}
-
 .second-level__list {
-  margin-left: 12px;
+  margin: 14px 0 0 12px;
   padding: 8px 0 8px 32px;
   border-left: 1px solid #e4e4e7;
 }
@@ -54,11 +50,6 @@
   margin-bottom: 10px;
 }
 
-.second-level__item--opened span{
-  display: block;
-  margin-bottom: 14px;
-}
-
 .third-level__item {
   margin-bottom: 10px;
 }
@@ -69,6 +60,18 @@
 
 .second-level__item:last-child .third-level__item:last-child {
   margin-bottom: 0;
+}
+
+.third-level__list-wrapper {
+  display: none;
+}
+
+.third-level__list-wrapper.second-level__item--opened {
+  display: block;
+}
+
+.third-level__list {
+  padding-top: 13px;
 }
 
 .third-level__link {

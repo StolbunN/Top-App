@@ -1,22 +1,33 @@
+"use client";
+
 import styles from "./Menu.module.css";
 import cn from "classnames";
-import { getMenu } from "@/api/menu";
 import { TopLevelCategory } from "@/interfaces/page.interface";
-import { FirstLevelMenuItem, PageItem } from "@/interfaces/menu.interface";
-import CoursesIcon from "@/public/courses.svg";
-import ServicesIcon from "@/public/services.svg";
-import BooksIcon from "@/public/books.svg";
-import ProductsIcon from "@/public/products.svg";
+import { MenuItem, PageItem } from "@/interfaces/menu.interface";
+import { MenuProps } from "./Menu.props";
+import { firstLevelMenu } from "@/helpers/helpers";
+import Link from "next/link";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 
-const firstLevelMenu: FirstLevelMenuItem[] = [
-  { route: "courses", name: "Курсы", icon: <CoursesIcon/>, id: TopLevelCategory.Courses},
-  { route: "services", name: "Сервисы", icon: <ServicesIcon/>, id: TopLevelCategory.Services},
-  { route: "books", name: "Книги", icon: <BooksIcon/>, id: TopLevelCategory.Books},
-  { route: "products", name: "Товары", icon: <ProductsIcon/>, id: TopLevelCategory.Products}
-];
+export function Menu({ menuData, ...props }: MenuProps) {
+  const initialMenu = menuData;
+  const [category, setCategory] = useState<TopLevelCategory>(TopLevelCategory.Courses);
+  const [menu, setMenu] = useState<MenuItem[][]>(initialMenu);
+  const path = usePathname();
+  const [active, setActive] = useState(false);
 
-export async function Menu({ ...props }) {
-  const menu = await getMenu(TopLevelCategory.Courses);
+  const openSecondLevelMenu = (secondCategory: string) => {
+    setMenu(menu.map(menuCategory => {
+      menuCategory.map(menuItem => {
+        if (menuItem._id.secondCategory == secondCategory) {
+          menuItem.isOpened = !menuItem.isOpened;
+        }
+        return menuItem;
+      });
+      return menuCategory;
+    }));
+  };
 
   const buildFirstLevel = () => {
     return (
@@ -24,15 +35,21 @@ export async function Menu({ ...props }) {
         {firstLevelMenu.map(menuItem => {
           return (
             <li key={menuItem.route} className={styles["first-level__item"]}>
-              <a href={`/${menuItem.route}`} className={cn(styles["first-level__link"], {
-                [styles["first-level__link--active"]]: menuItem.id == TopLevelCategory.Courses
-              })}>
+              <Link
+                href={`/${menuItem.route}`}
+                className={cn(styles["first-level__link"], {
+                  [styles["first-level__link--active"]]: menuItem.id == category
+                })}
+                onClick={() => setCategory(menuItem.id)}
+                prefetch={active ? null : false}
+                onMouseEnter={() => setActive(true)}
+              >
                 <div className={styles["first-level__link-content"]}>
                   {menuItem.icon}
                   <span>{menuItem.name}</span>
                 </div>
-              </a>
-              {menuItem.id == TopLevelCategory.Courses && buildSecondLevel(menuItem.route)}
+              </Link>
+              {(menuItem.id == category && menu[category].length > 0) && buildSecondLevel(menuItem.route)}
             </li>
           );
         })}
@@ -43,13 +60,22 @@ export async function Menu({ ...props }) {
   const buildSecondLevel = (route: string) => {
     return (
       <ul className={styles["second-level__list"]}>
-        {menu.map(menuItem => {
+        {menu[category].map(menuItem => {
+          if (menuItem.pages.map(m => m.alias).includes(path.split("/")[2])) {
+            menuItem.isOpened = true;
+          }
           return (
-            <li key={menuItem._id.secondCategory} className={cn(styles["second-level__item"], {
-              [styles["second-level__item--opened"]]: menuItem.isOpened
-            })}>
+            <li
+              key={menuItem._id.secondCategory}
+              className={styles["second-level__item"]}
+              onClick={() => openSecondLevelMenu(menuItem._id.secondCategory)}
+            >
               <span>{menuItem._id.secondCategory}</span>
-              {buildThirdLevel(menuItem.pages, route)}
+              <div className={cn(styles["third-level__list-wrapper"], {
+                [styles["second-level__item--opened"]]: menuItem.isOpened
+              })}>
+                {buildThirdLevel(menuItem.pages, route)}
+              </div>
             </li>
           );
         })}
@@ -63,22 +89,25 @@ export async function Menu({ ...props }) {
         {pages.map(page => {
           return (
             <li key={page._id} className={styles["third-level__item"]}>
-              <a href={`/${route}/${page.alias}`} className={cn(styles["third-level__link"], {
-                [styles["third-level__link--active"]]: false
-              })}>{page.category}</a>
+              <Link
+                href={`/${route}/${page.alias}`}
+                className={cn(styles["third-level__link"], {
+                [styles["third-level__link--active"]]: `/${route}/${page.alias}` == path
+                })}
+                prefetch={active ? null : false}
+                onMouseEnter={() => setActive(true)}
+              >{page.category}</Link>
             </li>
           );
         })}
       </ul>
     );
   };
-
-  console.log(menu);
   return (
     <nav {...props} className={cn(styles.menu)}>
       {buildFirstLevel()}
       <hr />
-      <div>{menu.length}</div>
+      <div>{menu[category].length}</div>
     </nav>
   );
 }
