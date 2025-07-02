@@ -7,17 +7,17 @@ export const metadata: Metadata = {
   description: "Страница группы продуктов",
 };
 
-interface PageProductTypeProps {
+interface TopPageTypeProps {
   params: Promise<{ type: string }>
 };
 
 export async function generateStaticParams() {
-    return firstLevelMenu.map(item => ({type: item.route}));
+  return firstLevelMenu.map(item => ({ type: item.route }));
 }
 
-export default async function PageProductType({params}: PageProductTypeProps ) {
+export default async function TopPageType({ params }: TopPageTypeProps) {
   const { type } = await params;
-  if(!firstLevelMenu.find(menuItem => menuItem.route == type)) {
+  if (!firstLevelMenu.find(menuItem => menuItem.route == type)) {
     notFound();
   }
   return (

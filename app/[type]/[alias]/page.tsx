@@ -1,15 +1,16 @@
 import { getMenu } from "@/api/menu";
-import { getProducts } from "@/api/pageProducts";
+import { getTopPage } from "@/api/topPage";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { firstLevelMenu } from "@/helpers/helpers";
+import { getProducts } from "@/api/products";
 
 export const metadata: Metadata = {
   title: "Страница продуктов",
   description: "Страница продуктов",
 };
 
-interface PageProductsProps {
+interface TopPageProps {
   params: Promise<{ type: string; alias: string }>
 };
 
@@ -23,28 +24,33 @@ export async function generateStaticParams() {
   return menuItems;
 }
 
-export default async function PageProducts({ params }: PageProductsProps) {
+export default async function TopPage({ params }: TopPageProps) {
   try {
     const { type, alias } = await params;
-    const page = await getProducts(alias);
-    const category = page?.firstCategory;
-    const route = firstLevelMenu.find(menuItem => menuItem.id == category)?.route;
+    const page = await getTopPage(alias);
+    if (!page) {
+      throw new Error("Страница продуктов на загружена");
+    }
+    const products = await getProducts(page?.category, 10);
+    const topCategory = page?.firstCategory;
+    const route = firstLevelMenu.find(menuItem => menuItem.id == topCategory)?.route;
 
     let paths: string[] = [];
-    if (!Number.isFinite(category) || category == undefined) {
+    if (!Number.isFinite(topCategory) || topCategory == undefined) {
       notFound();
     }
-    const menu = await getMenu(category);
+    const menu = await getMenu(topCategory);
     paths = menu.flatMap(item => item.pages.map(page => `/${route}/${page.alias}`));
 
     if (!paths.find(path => path == `/${type}/${alias}`)) {
       notFound();
     }
-    
+
     return (
       <div>
         Страница с alias {alias}
         <div>{page?.title}</div>
+        <div>Количество {page?.title} - {products.length}</div>
       </div>
     );
   } catch {
