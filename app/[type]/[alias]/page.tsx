@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { firstLevelMenu } from "@/helpers/helpers";
 import { getProducts } from "@/api/products";
+import { TopPageComponents } from "@/components";
 
 export const metadata: Metadata = {
   title: "Страница продуктов",
@@ -47,11 +48,11 @@ export default async function TopPage({ params }: TopPageProps) {
     }
 
     return (
-      <div>
-        Страница с alias {alias}
-        <div>{page?.title}</div>
-        <div>Количество {page?.title} - {products.length}</div>
-      </div>
+      <TopPageComponents 
+        firstCategory={topCategory}
+        page={page}
+        products={products}
+      />
     );
   } catch {
     notFound();

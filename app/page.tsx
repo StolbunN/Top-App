@@ -1,7 +1,6 @@
 "use client";
 
-import { Heading, Button, Paragraph, Tag } from "@/components";
-import { Rating } from "@/components/Rating/Rating";
+import { Heading, Button, Paragraph, Tag, Rating } from "@/components";
 import { useState } from "react";
 
 

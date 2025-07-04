@@ -1,0 +1,9 @@
+.card {
+  border-radius: 12px;
+  background-color: var(--white);
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 5%);
+}
+
+.orange {
+  background: #fffcf8;
+}
