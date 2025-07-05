@@ -3,7 +3,6 @@ import styles from "./TopPageComponents.module.css";
 import { Heading } from "../Heading/Heading";
 import { Tag } from "../Tag/Tag";
 import { HhData } from "../HhData/HhData";
-import { HhDataProps } from "../HhData/HhData.props";
 import { Advantages } from "../Advantages/Advantages";
 
 export function TopPageComponents({firstCategory, page, products}: TopPageComponentsProps) {
@@ -22,7 +21,7 @@ export function TopPageComponents({firstCategory, page, products}: TopPageCompon
             <span>Вакансии - {page.category}</span>
             <Tag color="red" size="l" className={styles["hh-tag"]}>hh.ru</Tag>
           </Heading>
-        <HhData {...page.hh as HhDataProps}/>
+        <HhData {...page.hh}/>
       </div>}
       {page.advantages && page.advantages.length > 0 && <div className={styles["advantages-wrapper"]}>
         <Heading tag="h2">Преимущества</Heading>
