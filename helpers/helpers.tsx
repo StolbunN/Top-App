@@ -11,3 +11,13 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
   { route: "books", name: "Книги", icon: <BooksIcon/>, id: TopLevelCategory.Books},
   { route: "products", name: "Товары", icon: <ProductsIcon/>, id: TopLevelCategory.Products}
 ];
+
+const options: Intl.NumberFormatOptions  = {
+  style: "currency",
+  currency: "RUB",
+  maximumFractionDigits: 0
+};
+
+export const priceRub = (price: number): string => {
+  return new Intl.NumberFormat("ru-RU", options).format(price);
+};
