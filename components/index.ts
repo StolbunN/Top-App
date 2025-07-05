@@ -6,3 +6,4 @@ export * from "./Rating/Rating";
 export * from "./TopPageComponents/TopPageComponents";
 export * from "./Card/Card";
 export * from "./HhData/HhData";
+export * from "./Advantages/Advantages";

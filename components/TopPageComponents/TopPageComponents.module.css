@@ -10,10 +10,29 @@
   margin-bottom: 50px;
 }
 
+.hh-wrapper {
+  margin-bottom: 50px;
+}
+
 .hh-title span {
   padding-right: 20px;
 }
 
-.tag {
+.hh-tag {
   vertical-align: middle;
+}
+
+.advantages-wrapper {
+  margin-bottom: 30px;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  white-space: nowrap;
 }
