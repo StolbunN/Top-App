@@ -1,0 +1,15 @@
+.input {
+  padding: 7px 12px;
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 5%);
+  background: var(--white);
+  border: none;
+  border-radius: 5px;
+  outline-color: var(--primary);
+  font-weight: 400;
+  font-size: 16px;
+  font-family: var(--font-noto-sans);
+}
+
+.input::placeholder {
+  color: #a4a4a4;
+}

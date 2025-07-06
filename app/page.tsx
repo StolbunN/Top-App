@@ -1,6 +1,6 @@
 "use client";
 
-import { Heading, Button, Paragraph, Tag, Rating } from "@/components";
+import { Heading, Button, Paragraph, Tag, Rating, Input, Textarea } from "@/components";
 import { useState } from "react";
 
 
@@ -32,6 +32,8 @@ export default function Home() {
       <Tag color="red" size="l">Тег</Tag>
       <Tag color="primary">Тег</Tag>
       <Rating rating={rating} setRating={setRating} isEditable></Rating>
+      <Input placeholder="Test" />
+      <Textarea placeholder="Test Textarea"/>
     </div>
   );
 }
