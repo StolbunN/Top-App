@@ -1,10 +1,15 @@
 import { AdvantagesProps } from "./Advantages.props";
 import styles from "./Advantages.module.css";
 import CheckIcon from "@/public/check.svg";
+import { Heading } from "../Heading/Heading";
 
 export function Advantages({advantages}: AdvantagesProps) {
+  if(advantages.some(advantage => !advantage.title)) {
+    return <></>;
+  }
   return (
     <div className={styles.advantages}>
+      <Heading tag="h2">Преимущества</Heading>
       {advantages.map(advantage => {
         return (
           <div key={advantage._id} className={styles.advantage}>

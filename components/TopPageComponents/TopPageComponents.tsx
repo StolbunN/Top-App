@@ -4,8 +4,10 @@ import { Heading } from "../Heading/Heading";
 import { Tag } from "../Tag/Tag";
 import { HhData } from "../HhData/HhData";
 import { Advantages } from "../Advantages/Advantages";
+import parse from "html-react-parser";
 
 export function TopPageComponents({firstCategory, page, products}: TopPageComponentsProps) {
+  console.log(page.advantages);
   return (
     <div className={styles["top-page"]}>
       <header className={styles["header"]}>
@@ -24,10 +26,11 @@ export function TopPageComponents({firstCategory, page, products}: TopPageCompon
         <HhData {...page.hh}/>
       </div>}
       {page.advantages && page.advantages.length > 0 && <div className={styles["advantages-wrapper"]}>
-        <Heading tag="h2">Преимущества</Heading>
+        {/* <Heading tag="h2">Преимущества</Heading> */}
         <Advantages advantages={page.advantages}/>
       </div>}
-      {page.seoText && <div>{page.seoText}</div>}
+      {/* {page.seoText && <div>{page.seoText}</div>} */}
+      {page.seoText && <div className={styles.seo}>{parse(page.seoText)}</div>}
       <Heading tag="h2">Получаемые навыки</Heading>
       {page.tags.length > 0 && <div className={styles.tags}>
         {page.tags.map(tag => <Tag key={tag} color="primary" className={styles.tag}>{tag}</Tag>)}
