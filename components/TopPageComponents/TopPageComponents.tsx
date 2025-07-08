@@ -25,8 +25,10 @@ export function TopPageComponents({firstCategory, page, products}: TopPageCompon
   return (
     <div className={styles["top-page"]}>
       <header className={styles["header"]}>
-        <Heading tag="h1">{page.title}</Heading>
-        {sortedProducts && <Tag color="grey" size="l">{products.length}</Tag>}
+        <Heading tag="h1">
+          <span className={styles.title}>{page.title}</span>
+          {sortedProducts && <Tag color="grey" size="l" className={styles["product-count"]}>{products.length}</Tag>}
+        </Heading>
         <Sort sort={sort} setSortAction={setSort}/>
       </header>
       <div className={styles["products"]}>
