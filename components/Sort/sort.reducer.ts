@@ -13,7 +13,7 @@ export const sortReducer = (state: SortReducerState, action: SortAction): SortRe
     case SortEnum.Rating: {
       return {
         sort: SortEnum.Rating,
-        products: state.products.sort((a, b) => a.initialRating > b.initialRating ? -1 : 1)
+        products: state.products.sort((a, b) => (a.reviewAvg ?? a.initialRating) > (b.reviewAvg ?? b.initialRating) ? -1 : 1)
       };
     }
     case SortEnum.Price: {
@@ -33,7 +33,7 @@ export const initSortState = (initState: SortReducerState) => {
     case SortEnum.Rating: {
       return {
         sort: SortEnum.Rating,
-        products: initState.products.sort((a, b) => a.initialRating > b.initialRating ? -1 : 1)
+        products: initState.products.sort((a, b) => (a.reviewAvg ?? a.initialRating) > (b.reviewAvg ?? b.initialRating) ? -1 : 1)
       };
     }
     case SortEnum.Price: {
