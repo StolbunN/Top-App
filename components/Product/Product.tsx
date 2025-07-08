@@ -37,7 +37,9 @@ export function Product({product, className, ...props}: ProductProps) {
             <span className={styles["characteristic__value"]}>{item.value}</span>
           </li>))}
         </ul>
-        <div className={styles.tags}>{product.tags.map(tag => <Tag key={tag} color="ghost" className={styles.tag}>{tag}</Tag>)}</div>
+        <div className={styles.tags}>
+          {product.tags.map(tag => <Tag key={tag} color="ghost" className={styles.tag}>{tag}</Tag>)}
+        </div>
       </div>
       <div className={styles.criteria}>
         {product.advantages && <div className={styles.advantages}>
@@ -49,7 +51,7 @@ export function Product({product, className, ...props}: ProductProps) {
           <Paragraph size="s">{product.disadvantages}</Paragraph>
         </div>}
       </div>
-      <Divider className={styles.line}/>
+      <Divider className={cn(styles.line, styles.line2)}/>
       <div className={styles.actions}>
         <Button appearance="primary">Узнать подробнее</Button>
         <Button appearance="ghost" arrow="right">Читать отзывы</Button>
