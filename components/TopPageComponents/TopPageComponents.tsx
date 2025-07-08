@@ -11,6 +11,7 @@ import { Sort } from "../Sort/Sort";
 import { SortEnum } from "../Sort/Sort.props";
 import { useReducer } from "react";
 import { initSortState, sortReducer } from "../Sort/sort.reducer";
+import { Product } from "../Product/Product";
 
 export function TopPageComponents({firstCategory, page, products}: TopPageComponentsProps) {
 
@@ -28,8 +29,8 @@ export function TopPageComponents({firstCategory, page, products}: TopPageCompon
         {sortedProducts && <Tag color="grey" size="l">{products.length}</Tag>}
         <Sort sort={sort} setSortAction={setSort}/>
       </header>
-      <div className={styles["content"]}>
-        {sortedProducts && sortedProducts.map(product => <div key={product._id}>{product.title}</div>)}
+      <div className={styles["products"]}>
+        {sortedProducts && sortedProducts.map(product => <Product key={product._id} product={product}/>)}
       </div>
       {firstCategory == 0 && page.hh && <div className={styles["hh-wrapper"]}>
           <Heading tag="h2" className={styles["hh-title"]}>

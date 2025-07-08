@@ -1,0 +1,156 @@
+.product {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: [start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratingstart] auto [end];
+  margin-bottom: 30px;
+}
+
+.logo {
+  grid-column: start / logoend;
+  grid-row: 1 / span 2;
+}
+
+.title,
+.categories {
+  grid-column: titlestart / middle;
+}
+
+.price,
+.price-title {
+  grid-column: pricestart / priceend;
+}
+
+.credit,
+.credit-title {
+  grid-column: creditstart / creditend;
+}
+
+.rating,
+.review-count {
+  grid-column: ratingstart / end;
+}
+
+.line,
+.description,
+.actions {
+  grid-column: start / end;
+}
+
+.characteristics {
+  grid-column: start / middle;
+  padding-right: 60px;
+}
+
+.criteria {
+  grid-column: middle / end;
+}
+
+.logo img {
+  border-radius: 5px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  align-self: flex-end;
+}
+
+.price,
+.credit {
+  font-weight: 400;
+  font-size: 20px;
+  align-self: flex-end;
+}
+
+.oldPrice {
+  margin-left: 8px;
+}
+
+.month {
+  font-size: 14px;
+}
+
+.rating {
+  align-self: flex-end;
+}
+
+.tag:not(:last-child) {
+  margin-right: 5px;
+}
+
+.categories {
+  padding-top: 10px;
+}
+
+.price-title,
+.credit-title,
+.review-count {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.line {
+  margin: 20px 0;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  margin-bottom: 15px;
+}
+
+.list {
+  margin-bottom: 20px;
+}
+
+.characteristic {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.characteristic__name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 200%;
+}
+
+.characteristic__dot {
+  font-weight: 500;
+  border-bottom: 1px dashed #e4e4e7;
+}
+
+.characteristic__value {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.criteria__title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.advantages {
+  border-left: 3px solid var(--green);
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.disadvantages {
+  border-left: 3px solid var(--red);
+  padding-left: 15px;
+}
+
+.actions {
+  display: flex;
+  gap: 20px;
+}
+
+.long {
+  grid-column: start / end;
+  padding: 0;
+}

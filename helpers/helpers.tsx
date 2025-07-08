@@ -21,3 +21,18 @@ const options: Intl.NumberFormatOptions  = {
 export const priceRub = (price: number): string => {
   return new Intl.NumberFormat("ru-RU", options).format(price);
 };
+
+
+// declensionOfNum(count, ["отзывов", "отзыв", "отзыва"])
+export const declensionOfNum = (count: number, declension: [string, string, string]): string => {
+  if(count > 4 && count < 21) {
+    return declension[0];
+  }
+  else if(count % 10 == 1) {
+    return declension[1];
+  }
+  else if (count % 10 == 2 || count % 10 == 3 || count % 10 == 4) {
+    return declension[2];
+  }
+  return declension[0];
+};

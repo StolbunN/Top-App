@@ -1,12 +1,12 @@
 .button {
   display: inline-block;
   cursor: pointer;
-  font-size: 18px;
-  line-height: 150%;
+  font-size: 14px;
+  line-height: 100%;
   text-align: center;
-  padding: 18px 24px;
+  padding: 10px;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   color: var(--black);
   transition: all .3s;
 }

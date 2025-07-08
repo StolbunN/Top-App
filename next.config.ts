@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
 
     return config;
   },
+  images: {
+    domains: ["old-images.hb.ru-msk.vkcs.cloud"],
+  },
 };
 
 export default nextConfig;
