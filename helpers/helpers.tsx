@@ -23,7 +23,6 @@ export const priceRub = (price: number): string => {
 };
 
 
-// declensionOfNum(count, ["отзывов", "отзыв", "отзыва"])
 export const declensionOfNum = (count: number, declension: [string, string, string]): string => {
   if(count > 4 && count < 21) {
     return declension[0];
@@ -35,4 +34,13 @@ export const declensionOfNum = (count: number, declension: [string, string, stri
     return declension[2];
   }
   return declension[0];
+};
+
+//* функция для получения правильных путей некоторых картинок, так как в API с ними возникли проблемы 
+
+export const errorPathToImg = (path: string): string => {
+  if(path.includes("cdn-bucket.hb.bizmrg.com")) {
+    return path.slice(path.indexOf("http://cdn-bucket.hb.bizmrg.com"));
+  }
+  return path;
 };

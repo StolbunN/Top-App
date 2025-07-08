@@ -10,7 +10,16 @@ const nextConfig: NextConfig = {
     return config;
   },
   images: {
-    domains: ["old-images.hb.ru-msk.vkcs.cloud"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "old-images.hb.ru-msk.vkcs.cloud"
+      },
+      {
+        protocol: "http",
+        hostname: "cdn-bucket.hb.bizmrg.com"
+      }
+    ],
   },
 };
 
