@@ -34,6 +34,7 @@
 .arrow {
   display: inline-block;
   margin-left: 11px;
+  transition: all .3s;
 }
 
 .primary .arrow {
