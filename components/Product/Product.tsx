@@ -13,6 +13,7 @@ import { declensionOfNum, errorPathToImg, priceRub } from "@/helpers/helpers";
 import { Divider } from "../Divider/Divider";
 import { Review } from "../Review/Review";
 import { useState } from "react";
+import { ReviewForm } from "../ReviewForm/ReviewForm";
 
 export function Product({ product, className, ...props }: ProductProps) {
 
@@ -76,6 +77,7 @@ export function Product({ product, className, ...props }: ProductProps) {
         [styles.visible]: isOpenReviews,
       })}>
         {product.reviews.map(rewiew => <Review key={rewiew._id} review={rewiew}/>)}
+        <ReviewForm produstId={product._id}/>
       </Card>
     </div>
   );

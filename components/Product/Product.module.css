@@ -308,10 +308,6 @@
 }
 
 @media (width < 441px) {
-  .product {
-    padding: 10px;
-  }
-
   .characteristic {
     grid-template-columns: min-content 1fr;
     align-items: baseline;
