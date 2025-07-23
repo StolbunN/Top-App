@@ -3,8 +3,13 @@ import styles from "./Textarea.module.css";
 import cn from "classnames";
 import {notoSans} from "@/font/font";
 
-export function Textarea({ className, ...props}: TextareaProps) {
+export function Textarea({ error, className, ...props}: TextareaProps) {
   return (
-    <textarea className={cn(styles.textarea, notoSans, className)} {...props}/>
+    <div className={cn(styles["textarea-wrapper"], className)}>
+      <textarea className={cn(styles.textarea, notoSans, {
+        [styles.error]: error
+      })} {...props}/>
+      {error && <span>{error.message}</span>}
+    </div>
   );
 }

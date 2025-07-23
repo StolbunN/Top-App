@@ -15,7 +15,7 @@
   align-items: center;
 }
 
-.textarea-wrapper, .submit {
+.textarea-field, .submit {
   grid-column: start / end;
 }
 
@@ -25,13 +25,20 @@
   gap: 13px;
 }
 
-.success {
-  background: var(--green-light);
+.panel {
   border-radius: 5px;
   padding: 20px;
   display: grid;
   grid-template-columns: [start] 1fr min-content [end];
   gap: 8px;
+}
+
+.success {
+  background: var(--green-light);
+}
+
+.error {
+  background: var(--red-light);
 }
 
 .text {
@@ -42,12 +49,24 @@
   cursor: pointer;
 }
 
+.error .close path {
+  stroke: var(--red);
+}
+
+.error .text {
+  grid-column: start / 2;
+}
+
+.error-field {
+  color: var(--red);
+}
+
 @media (width < 1071px) {
   .review-form {
     grid-template-columns: [start] 1fr 1fr [end];
   }
 
-  .input-wrapper input {
+  .input-field input {
     width: 100%;
   }
 }

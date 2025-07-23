@@ -12,12 +12,20 @@ import { Tag } from "../Tag/Tag";
 import { declensionOfNum, errorPathToImg, priceRub } from "@/helpers/helpers";
 import { Divider } from "../Divider/Divider";
 import { Review } from "../Review/Review";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ReviewForm } from "../ReviewForm/ReviewForm";
 
 export function Product({ product, className, ...props }: ProductProps) {
 
   const [isOpenReviews, setIsOpenReviews] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const scrollToRef = () => {
+    setIsOpenReviews(true);
+    ref.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className={styles["product-wrapper"]}>
@@ -33,7 +41,7 @@ export function Product({ product, className, ...props }: ProductProps) {
         <div className={styles.categories}>{product.categories.map(category => <Tag key={category} color="ghost" className={styles.tag}>{category}</Tag>)}</div>
         <div className={styles["price-title"]}>цена</div>
         <div className={styles["credit-title"]}>в кредит</div>
-        <div className={styles["review-count"]}>{product.reviewCount} {declensionOfNum(product.reviewCount, ["отзывов", "отзыв", "отзыва"])}</div>
+        <div className={styles["review-count"]}><a href="#ref" onClick={scrollToRef}>{product.reviewCount} {declensionOfNum(product.reviewCount, ["отзывов", "отзыв", "отзыва"])}</a></div>
         <Divider className={styles.line} />
         <div className={styles.description}>{product.description}</div>
         <div className={cn(styles.characteristics, {
@@ -72,12 +80,16 @@ export function Product({ product, className, ...props }: ProductProps) {
           </Button>
         </div>
       </Card>
-      <Card colorCard="orange" className={cn(styles.reviews, {
-        [styles.hidden]: !isOpenReviews,
-        [styles.visible]: isOpenReviews,
-      })}>
+      <Card 
+        colorCard="orange"
+        className={cn(styles.reviews, {
+          [styles.hidden]: !isOpenReviews,
+          [styles.visible]: isOpenReviews,
+        })}
+        ref={ref}
+      >
         {product.reviews.map(rewiew => <Review key={rewiew._id} review={rewiew}/>)}
-        <ReviewForm produstId={product._id}/>
+        <ReviewForm productId={product._id}/>
       </Card>
     </div>
   );

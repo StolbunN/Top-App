@@ -16,3 +16,19 @@
 .textarea::placeholder {
   color: #a4a4a4;
 }
+
+.textarea-wrapper {
+  position: relative;
+}
+
+.textarea-wrapper span {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  color: var(--red);
+  font-size: 14px;
+}
+
+.error {
+  border: 1px solid var(--red);
+}

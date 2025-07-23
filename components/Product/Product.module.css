@@ -106,6 +106,10 @@
   font-size: 14px;
 }
 
+.review-count {
+  color: var(--primary);
+}
+
 .description {
   font-weight: 400;
   font-size: 16px;

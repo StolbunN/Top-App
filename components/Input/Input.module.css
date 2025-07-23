@@ -13,3 +13,19 @@
 .input::placeholder {
   color: #a4a4a4;
 }
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper span {
+  position: absolute;
+  bottom: -22px;
+  left: 0;
+  color: var(--red);
+  font-size: 14px;
+}
+
+.error {
+  border: 1px solid var(--red);
+}

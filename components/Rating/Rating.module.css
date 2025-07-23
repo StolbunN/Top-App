@@ -13,3 +13,8 @@
 .editable {
   cursor: pointer;
 }
+
+.error svg{
+  stroke: var(--red);
+  stroke-width: 1px;
+}

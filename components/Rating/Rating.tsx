@@ -5,7 +5,7 @@ import styles from "./Rating.module.css";
 import StarIcon from "@/public/star.svg";
 import cn from "classnames";
 
-export function Rating({ isEditable = false, rating, setRating, ...props }: RatingProps) {
+export function Rating({ isEditable = false, rating, setRating, error, ...props }: RatingProps) {
 
   const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
@@ -55,7 +55,9 @@ export function Rating({ isEditable = false, rating, setRating, ...props }: Rati
       {ratingArray.map((r, i) => (
         <span 
           key={i} 
-          className={styles.star}
+          className={cn(styles.star, {
+            [styles.error]: error
+          })}
           tabIndex={isEditable ? 0 : -1}
           onClick={() => changeRating(i + 1)}
           onMouseEnter={() => displayRating(i + 1)}
