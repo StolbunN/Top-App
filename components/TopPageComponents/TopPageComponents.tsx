@@ -32,7 +32,7 @@ export function TopPageComponents({firstCategory, page, products}: TopPageCompon
         <Sort sort={sort} setSortAction={setSort}/>
       </header>
       <div className={styles["products"]}>
-        {sortedProducts && sortedProducts.map(product => <Product key={product._id} product={product}/>)}
+        {sortedProducts && sortedProducts.map(product => <Product layout key={product._id} product={product}/>)}
       </div>
       {firstCategory == 0 && page.hh && <div className={styles["hh-wrapper"]}>
           <Heading tag="h2" className={styles["hh-title"]}>

@@ -12,23 +12,24 @@ import { Tag } from "../Tag/Tag";
 import { declensionOfNum, errorPathToImg, priceRub } from "@/helpers/helpers";
 import { Divider } from "../Divider/Divider";
 import { Review } from "../Review/Review";
-import { useRef, useState } from "react";
+import { ForwardedRef, forwardRef, useRef, useState } from "react";
 import { ReviewForm } from "../ReviewForm/ReviewForm";
+import { motion } from "motion/react";
 
-export function Product({ product, className, ...props }: ProductProps) {
+const ProductWithRef = forwardRef(({ product, className, ...props }: ProductProps, ref: ForwardedRef<HTMLDivElement>) => {
 
   const [isOpenReviews, setIsOpenReviews] = useState<boolean>(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const myRef = useRef<HTMLDivElement>(null);
 
   const scrollToRef = () => {
     setIsOpenReviews(true);
-    ref.current?.scrollIntoView({
+    myRef.current?.scrollIntoView({
       behavior: "smooth",
     });
   };
 
   return (
-    <div className={styles["product-wrapper"]}>
+    <div className={styles["product-wrapper"]} ref={ref}>
       <Card className={cn(styles.product, className)} {...props}>
         <div className={styles.logo}><Image src={errorPathToImg(product.image)} alt={product.title} width={70} height={70} /></div>
         <div className={styles.title}>{product.title}</div>
@@ -86,11 +87,15 @@ export function Product({ product, className, ...props }: ProductProps) {
           [styles.hidden]: !isOpenReviews,
           [styles.visible]: isOpenReviews,
         })}
-        ref={ref}
+        ref={myRef}
       >
         {product.reviews.map(rewiew => <Review key={rewiew._id} review={rewiew}/>)}
         <ReviewForm productId={product._id}/>
       </Card>
     </div>
   );
-}
+});
+
+ProductWithRef.displayName = "Product";
+
+export const Product = motion.create(ProductWithRef);
