@@ -46,32 +46,16 @@
   cursor: pointer;
 }
 
-.second-level__item:not(:last-child) {
+.second-level__item div {
   margin-bottom: 10px;
-}
-
-.third-level__item {
-  margin-bottom: 10px;
-}
-
-.third-level__item:last-child {
-  margin-bottom: 20px;
 }
 
 .second-level__item:last-child .third-level__item:last-child {
   margin-bottom: 0;
 }
 
-.third-level__list-wrapper {
-  display: none;
-}
-
-.third-level__list-wrapper.second-level__item--opened {
-  display: block;
-}
-
 .third-level__list {
-  padding-top: 13px;
+  overflow: hidden;
 }
 
 .third-level__link {

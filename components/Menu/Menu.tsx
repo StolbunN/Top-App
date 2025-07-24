@@ -9,6 +9,7 @@ import { firstLevelMenu } from "@/helpers/helpers";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { motion } from "motion/react";
 
 export function Menu({ menuData, ...props }: MenuProps) {
   const initialMenu = menuData;
@@ -16,6 +17,40 @@ export function Menu({ menuData, ...props }: MenuProps) {
   const [menu, setMenu] = useState<MenuItem[][]>(initialMenu);
   const path = usePathname();
   const [active, setActive] = useState(false);
+
+  const variants = {
+    visible: {
+      opacity: 1,
+      height: "max-content",
+      marginBottom: 0,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.1
+      },
+      transitionEnd: {
+      marginBottom: 10,
+    },
+    },
+    hidden: {
+      opacity: 0,
+      height: 0,
+      marginBottom: 0,
+    },
+  };
+
+  const variantsChild = {
+    visible: {
+      opacity: 1,
+      height: "max-content",
+      marginBottom: 10,
+    },
+    hidden: {
+      opacity: 0,
+      height: 0,
+      overflow: "hidden",
+      marginBottom: 0,
+    },
+  };
 
   const openSecondLevelMenu = (secondCategory: string) => {
     setMenu(menu.map(menuCategory => {
@@ -70,12 +105,15 @@ export function Menu({ menuData, ...props }: MenuProps) {
               className={styles["second-level__item"]}
               onClick={() => openSecondLevelMenu(menuItem._id.secondCategory)}
             >
-              <span>{menuItem._id.secondCategory}</span>
-              <div className={cn(styles["third-level__list-wrapper"], {
-                [styles["second-level__item--opened"]]: menuItem.isOpened
-              })}>
+              <div>{menuItem._id.secondCategory}</div>
+              <motion.ul
+                layout={true}
+                initial={menuItem.isOpened ? "visible" : "hidden"}
+                animate={menuItem.isOpened ? "visible" : "hidden"}
+                variants={variants}
+                className={styles["third-level__list"]}>
                 {buildThirdLevel(menuItem.pages, route)}
-              </div>
+              </motion.ul>
             </li>
           );
         })}
@@ -85,29 +123,30 @@ export function Menu({ menuData, ...props }: MenuProps) {
 
   const buildThirdLevel = (pages: PageItem[], route: string) => {
     return (
-      <ul className={styles["third-level__list"]}>
-        {pages.map(page => {
+      <>
+        {pages.map((page: PageItem) => {
           return (
-            <li key={page._id} className={styles["third-level__item"]}>
+            <motion.li
+              variants={variantsChild}
+              key={page._id}
+              className={styles["third-level__item"]}>
               <Link
                 href={`/${route}/${page.alias}`}
                 className={cn(styles["third-level__link"], {
-                [styles["third-level__link--active"]]: `/${route}/${page.alias}` == path
+                  [styles["third-level__link--active"]]: `/${route}/${page.alias}` == path
                 })}
                 prefetch={active ? null : false}
                 onMouseEnter={() => setActive(true)}
               >{page.category}</Link>
-            </li>
+            </motion.li>
           );
         })}
-      </ul>
+      </>
     );
   };
   return (
     <nav {...props} className={cn(styles.menu)}>
       {buildFirstLevel()}
-      <hr />
-      <div>{menu[category].length}</div>
     </nav>
   );
 }
