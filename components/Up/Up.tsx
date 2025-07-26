@@ -1,9 +1,9 @@
 "use client";
 import { useScrollY } from "@/hooks/useScrollY";
 import styles from "./Up.module.css";
-import UpIcon from "@/public/up.svg";
 import { motion, useAnimation } from "motion/react";
 import { useEffect } from "react";
+import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
 
 export function Up() {
 
@@ -22,13 +22,12 @@ export function Up() {
   };
 
   return (
-    <motion.button
+    <motion.div
       className={styles.up}
-      onClick={scrollToTop}
       initial={{opacity: 0}}
       animate={controls}
     >
-      <UpIcon/>
-    </motion.button>
+      <ButtonIcon appearance="primary" icon="up" onClick={scrollToTop}/>
+    </motion.div>
   );
 }
