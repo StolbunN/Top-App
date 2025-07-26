@@ -15,6 +15,8 @@
   "characteristics characteristics characteristics characteristics . criteria criteria criteria criteria"
   "line2 line2 line2 line2 line2 line2 line2 line2 line2"
   "actions actions actions actions actions actions actions actions actions"; */
+  position: relative;
+  z-index: 5;
 }
 
 .logo {
@@ -174,17 +176,8 @@
 
 .reviews {
   margin-top: -15px;
-}
-
-.hidden {
-  overflow: hidden;
-  max-height: 0;
-  padding: 0;
-}
-
-.visible {
-  max-height: none;
   padding: 30px;
+  overflow: hidden;
 }
 
 @media (width < 1351px) {

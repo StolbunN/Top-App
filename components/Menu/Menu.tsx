@@ -28,8 +28,8 @@ export function Menu({ menuData, ...props }: MenuProps) {
         staggerChildren: 0.1
       },
       transitionEnd: {
-      marginBottom: 10,
-    },
+        marginBottom: 10,
+      },
     },
     hidden: {
       opacity: 0,

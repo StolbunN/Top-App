@@ -19,18 +19,36 @@ import { motion } from "motion/react";
 const ProductWithRef = forwardRef(({ product, className, ...props }: ProductProps, ref: ForwardedRef<HTMLDivElement>) => {
 
   const [isOpenReviews, setIsOpenReviews] = useState<boolean>(false);
-  const myRef = useRef<HTMLDivElement>(null);
+  const dividerRef = useRef<HTMLHRElement>(null);
 
-  const scrollToRef = () => {
-    setIsOpenReviews(true);
-    myRef.current?.scrollIntoView({
-      behavior: "smooth",
-    });
+  const variants = {
+    closeReviews: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.2
+      }
+    },
+    openReviews: {
+      opacity: 1,
+      height: "auto",
+      zIndex: 10,
+      position: "relative"
+    }
   };
 
+  // ! была идея сделать скролл к окну отзывов только при нажатии на <a href="#ref">...</a>
+  // ! но сейчас работает так же при нажатии на кнопку "Читать отзывы"
+  // const scrollToRef = () => {
+  //   setIsOpenReviews(true);
+  //   dividerRef.current?.scrollIntoView({
+  //     behavior: "smooth",
+  //   });
+  // };
+
   return (
-    <div className={styles["product-wrapper"]} ref={ref}>
-      <Card className={cn(styles.product, className)} {...props}>
+    <div className={styles["product-wrapper"]} ref={ref} {...props}>
+      <Card className={cn(styles.product, className)}>
         <div className={styles.logo}><Image src={errorPathToImg(product.image)} alt={product.title} width={70} height={70} /></div>
         <div className={styles.title}>{product.title}</div>
         <div className={styles.price}>
@@ -42,7 +60,7 @@ const ProductWithRef = forwardRef(({ product, className, ...props }: ProductProp
         <div className={styles.categories}>{product.categories.map(category => <Tag key={category} color="ghost" className={styles.tag}>{category}</Tag>)}</div>
         <div className={styles["price-title"]}>цена</div>
         <div className={styles["credit-title"]}>в кредит</div>
-        <div className={styles["review-count"]}><a href="#ref" onClick={scrollToRef}>{product.reviewCount} {declensionOfNum(product.reviewCount, ["отзывов", "отзыв", "отзыва"])}</a></div>
+        <div className={styles["review-count"]}><a href="#ref" onClick={() => setIsOpenReviews(true)}>{product.reviewCount} {declensionOfNum(product.reviewCount, ["отзывов", "отзыв", "отзыва"])}</a></div>
         <Divider className={styles.line} />
         <div className={styles.description}>{product.description}</div>
         <div className={cn(styles.characteristics, {
@@ -69,7 +87,7 @@ const ProductWithRef = forwardRef(({ product, className, ...props }: ProductProp
             <Paragraph size="s">{product.disadvantages}</Paragraph>
           </div>}
         </div>
-        <Divider className={cn(styles.line, styles.line2)} />
+        <Divider className={cn(styles.line, styles.line2)} ref={dividerRef}/>
         <div className={styles.actions}>
           <Button appearance="primary">Узнать подробнее</Button>
           <Button
@@ -81,17 +99,26 @@ const ProductWithRef = forwardRef(({ product, className, ...props }: ProductProp
           </Button>
         </div>
       </Card>
-      <Card 
-        colorCard="orange"
-        className={cn(styles.reviews, {
-          [styles.hidden]: !isOpenReviews,
-          [styles.visible]: isOpenReviews,
-        })}
-        ref={myRef}
+      <motion.div
+        initial="closeReviews"
+        animate={isOpenReviews ? "openReviews" : "closeReviews"}
+        variants={variants}
+        onAnimationComplete={() => {
+          if (isOpenReviews) {
+            dividerRef.current?.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        }}
       >
-        {product.reviews.map(rewiew => <Review key={rewiew._id} review={rewiew}/>)}
-        <ReviewForm productId={product._id}/>
-      </Card>
+        <Card
+          colorCard="orange"
+          className={styles.reviews}
+        >
+          {product.reviews.map(rewiew => <Review key={rewiew._id} review={rewiew} />)}
+          <ReviewForm productId={product._id} />
+        </Card>
+      </motion.div>
     </div>
   );
 });

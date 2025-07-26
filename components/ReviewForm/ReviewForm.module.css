@@ -6,7 +6,6 @@
   grid-template-columns: [start] auto 1fr auto [end];
   align-items: center;
   gap: 20px 30px;
-  margin-bottom: 30px;
 }
 
 .rating {
