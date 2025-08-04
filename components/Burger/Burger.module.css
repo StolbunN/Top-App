@@ -4,20 +4,17 @@
   height: 40px;
   border: none;
   cursor: pointer;
+  background-color: var(--gray-light);
   transition: background .3s;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.primary {
-  background-color: var(--primary);
+.button svg *{
+  fill: var(--primary);
 }
 
-.primary svg *{
-  fill: var(--gray-light);
-}
-
-.primary:hover {
-  background-color: var(--primary-hover);
+.button:hover {
+  background-color: var(--gray);
 }

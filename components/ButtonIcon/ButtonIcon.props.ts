@@ -1,12 +1,10 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import up from "@/public/up.svg";
-import close from "@/public/close-menu.svg";
-import menu from "@/public/menu.svg";
 
 export const icons = {
   up,
-  close,
-  menu
+  // close,
+  // burger
 };
 
 export type IconName = keyof typeof icons;

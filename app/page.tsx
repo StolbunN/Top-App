@@ -21,7 +21,9 @@ export default function Home() {
         Маленький текст
       </Paragraph>
       <Paragraph>
-        Средний (стандартный) текст
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nisi reiciendis laudantium possimus, ad, laborum assumenda veniam excepturi consequuntur, quasi necessitatibus impedit laboriosam sint quisquam similique in dolore quis. Provident.
+        Eos adipisci, doloremque autem, laborum distinctio odit ipsam magni natus officia officiis inventore animi vel non saepe? Eaque commodi error, earum dolore, maiores, cumque est quis accusantium debitis expedita inventore!
+        Distinctio illum repellendus obcaecati consequuntur aliquam officia maxime veritatis dicta quibusdam fugiat odio reprehenderit sapiente iure doloremque molestias enim a, assumenda ex suscipit! Accusantium sunt recusandae ab, doloremque a nemo.
       </Paragraph>
       <Paragraph size="l">
         Большой текст

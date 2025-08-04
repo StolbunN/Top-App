@@ -2,6 +2,7 @@ import { ButtonIconProps, icons } from "./ButtonIcon.props";
 import styles from "./ButtonIcon.module.css";
 import cn from "classnames";
 
+
 export function ButtonIcon({ appearance, icon, className, ...props }: ButtonIconProps) {
 
   const IconComponent = icons[icon];

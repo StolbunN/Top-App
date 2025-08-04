@@ -35,6 +35,11 @@
     ". body ."
     'footer footer footer';
     column-gap: 10px;
+    padding-top: 15px;
+  }
+
+  .header {
+    margin-bottom: 10px;
   }
 
   .sidebar {

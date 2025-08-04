@@ -1,3 +1,31 @@
 .header {
-  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  padding: 15px 10px;
+  background: var(--background);
+  overflow-y: scroll;
+}
+
+.header-top .burger {
+  display: none;
+  position: relative;
+  z-index: 70;
+}
+
+@media (width < 992px) {
+  .header-top {
+    display: flex;
+  }
+
+  .header-top .burger {
+    display: flex;
+    margin-left: auto;
+    position: fixed;
+    right: 10px;
+  }
 }
