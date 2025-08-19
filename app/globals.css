@@ -4,15 +4,16 @@
   --foreground: #59595a;
   --primary: #ff9500;
   --primary-hover: #da7f00;
-  --black: #262626;
-  --black-light: #333;
+  --grey-15: #262626;
+  --grey-20: #333;
   --white: #fff;
-  --gray: #f1f1f3;
-  --gray-light: #fcfcfd;
+  --white-95: #f1f1f3;
+  --white-99: #fcfcfd;
   --red: #FC836D;
   --red-light: #fcaea1;
   --green: #1DC37E;
   --green-light: #C8F8E4; 
+  --white-90: #e4e4e7;
 }
 
 html,

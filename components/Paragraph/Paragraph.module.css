@@ -14,3 +14,31 @@
 .l {
   font-size: 20px;
 }
+
+@media (width <= 1440px) {
+  .s {
+    font-size: 14px;
+  }
+
+  .m {
+    font-size: 16px;
+  }
+
+  .l {
+    font-size: 18px;
+  }
+}
+
+@media (width <= 440px) {
+  .s {
+    font-size: 12px;
+  }
+
+  .m {
+    font-size: 14px;
+  }
+
+  .l {
+    font-size: 16px;
+  }
+}

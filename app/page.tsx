@@ -1,15 +1,75 @@
-"use client";
-
-import { Heading, Button, Paragraph, Tag, Rating, Input, Textarea } from "@/components";
-import { useState } from "react";
+import { Button, Card, Heading, Paragraph, Tag } from "@/components";
+import styles from "./page.module.css";
+import AbstractLineIcon from "@/public/abstract-line.svg";
+import LightningIcon from "@/public/lightning.svg";
+import resources from "./resources.json";
+import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Home() {
-  const [rating, setRating] = useState<number>(4);
+
   return (
-    <div>
-      <Heading tag="h1">Привет, Мир!</Heading>
-      <Heading tag="h2">Привет, Мир!</Heading>
+    <div className={styles.main}>
+      <header className={styles.header}>
+        <Heading tag="h1" className={styles.title}>
+          <AbstractLineIcon className={styles["abs-line"]} />
+          <LightningIcon className={styles.lightning} />
+            <span className={styles["title-text"]}><span className={styles.primary}>Раскройте</span>&nbsp;<span>свой Творческий потенциал</span></span>
+        </Heading>
+        <Heading tag="h2" className={styles.subtitle}>
+          с онлайн-курсами по дизайну и разработке.
+        </Heading>
+        <Paragraph>Учитесь у отраслевых экспертов и повышайте свои навыки.</Paragraph>
+      </header>
+      <section className={styles.content}>
+        <div className={styles.heading}>
+          <Heading tag="h2">
+            Что у нас есть
+          </Heading>
+          <Paragraph>
+            Хотите учиться, читать или покупать с умом? Мы собрали для вас топовые курсы, полезные книги, проверенные товары и сервисы. Выбирайте лучшее на основе реальных оценок и отзывов!
+          </Paragraph>
+        </div>
+        <div className={styles.resources}>
+
+          {resources.map(resource => {
+            return (
+              <Card key={resource.name} className={styles.resource}>
+                <Heading tag="h3">
+                  {resource.name}
+                </Heading>
+                <Heading tag="h4">
+                  {resource.title}
+                </Heading>
+                <div className={styles.images}>
+                  {resource.image.map(img => {
+                    return (
+                      <div className={styles["image-wrapper"]} key={img}>
+                        <Image src={img} alt={img} width={300} height={300} className={styles.img}/>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className={styles.tags}>
+                  {resource.tags.map(tag => {
+                    return (
+                      <Tag key={tag} color="primary" className={styles.tag}>{tag}</Tag>
+                    );
+                  })}
+                </div>
+                <Paragraph className={styles.description}>
+                  {resource.description}
+                </Paragraph>
+                <Link href={resource.path}>
+                  <Button arrow="right" appearance="primary">Узнать больше</Button>
+                </Link>
+              </Card>
+            );
+          })}
+        </div>
+      </section>
+      {/* <Heading tag="h2">Привет, Мир!</Heading>
       <Heading tag="h3">Привет, Мир!</Heading>
       <Button appearance="primary">Primary</Button>
       <Button appearance="primary" arrow="right">Primary</Button>
@@ -33,9 +93,8 @@ export default function Home() {
       <Tag color="green">Тег</Tag>
       <Tag color="red" size="l">Тег</Tag>
       <Tag color="primary">Тег</Tag>
-      <Rating rating={rating} setRating={setRating} isEditable></Rating>
       <Input placeholder="Test" />
-      <Textarea placeholder="Test Textarea"/>
+      <Textarea placeholder="Test Textarea"/> */}
     </div>
   );
 }

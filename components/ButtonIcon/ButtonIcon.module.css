@@ -15,7 +15,7 @@
 }
 
 .primary svg *{
-  fill: var(--gray-light);
+  fill: var(--white-99);
 }
 
 .primary:hover {

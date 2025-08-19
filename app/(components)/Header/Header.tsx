@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Menu } from "@/components";
 import { usePathname } from "next/navigation";
 import { Burger } from "@/components/Burger/Burger";
+import Link from "next/link";
 
 export function Header({ menuData, className, ...props }: HeaderProps) {
 
@@ -43,7 +44,11 @@ export function Header({ menuData, className, ...props }: HeaderProps) {
   return (
     <header {...props} className={cn(styles.header, className)}>
       <div className={styles["header-top"]}>
-        <LogoIcon />
+        <Link
+          href={"/"}
+        >
+          <LogoIcon />
+        </Link>
         <Burger
           onClick={() => setIsOpened(!isOpened)}
           isOpened={isOpened}

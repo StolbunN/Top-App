@@ -4,7 +4,7 @@
   height: 40px;
   border: none;
   cursor: pointer;
-  background-color: var(--gray-light);
+  background-color: var(--white-99);
   transition: background .3s;
   display: flex;
   justify-content: center;
@@ -16,5 +16,5 @@
 }
 
 .button:hover {
-  background-color: var(--gray);
+  background-color: var(--white-95);
 }

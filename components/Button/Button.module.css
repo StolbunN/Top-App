@@ -7,7 +7,7 @@
   padding: 10px;
   border: none;
   border-radius: 5px;
-  color: var(--black);
+  color: var(--grey-15);
   transition: all .3s;
 }
 
@@ -23,12 +23,12 @@
 
 .ghost {
   font-weight: 500;
-  border: 1px solid var(--gray);
-  background-color: var(--gray-light);
+  border: 1px solid var(--white-95);
+  background-color: var(--white-99);
 }
 
 .ghost:hover {
-  background-color: var(--gray);
+  background-color: var(--white-95);
 }
 
 .arrow {
