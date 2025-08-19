@@ -69,21 +69,26 @@ export function Menu({ menuData, ...props }: MenuProps) {
       <ul className={styles["first-level__list"]}>
         {firstLevelMenu.map(menuItem => {
           return (
-            <li key={menuItem.route} className={styles["first-level__item"]}>
-              <Link
-                href={`/${menuItem.route}`}
-                className={cn(styles["first-level__link"], {
-                  [styles["first-level__link--active"]]: menuItem.id == category
+            <li key={menuItem.route} className={cn(styles["first-level__item"], {
+                  [styles["first-level__item--active"]]: menuItem.id == category
                 })}
                 onClick={() => setCategory(menuItem.id)}
-                prefetch={active ? null : false}
                 onMouseEnter={() => setActive(true)}
+                >
+              <div
+                // href={`/${menuItem.route}`}
+                // className={cn(styles["first-level__link"], {
+                //   [styles["first-level__link--active"]]: menuItem.id == category
+                // })}
+                // onClick={() => setCategory(menuItem.id)}
+                // prefetch={active ? null : false}
+                // onMouseEnter={() => setActive(true)}
               >
-                <div className={styles["first-level__link-content"]}>
+                <div className={styles["first-level__item-content"]}>
                   {menuItem.icon}
                   <span>{menuItem.name}</span>
                 </div>
-              </Link>
+              </div>
               {(menuItem.id == category && menu[category].length > 0) && buildSecondLevel(menuItem.route)}
             </li>
           );

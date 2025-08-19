@@ -3,29 +3,30 @@
   gap: 20px;
 }
 
-.first-level__link {
+.first-level__item {
   font-weight: 500;
   font-size: 18px;
   color: #787d85;
+  cursor: pointer;
 }
 
-.first-level__link--active {
+.first-level__item--active {
   color: var(--primary);
 }
 
-.first-level__link--active svg{
+.first-level__item--active svg{
   fill: var(--primary);
 }
 
-.first-level__link:hover {
+.first-level__item:hover {
   color: var(--primary);
 }
 
-.first-level__link:hover svg{
+.first-level__item:hover svg{
   fill: var(--primary);
 }
 
-.first-level__link-content {
+.first-level__item-content {
   display: grid;
   grid-template-columns: 24px 1fr;
   gap: 20px;
