@@ -43,7 +43,7 @@ export default function Home() {
                   {resource.title}
                 </Heading>
                 <div className={styles.images}>
-                  {resource.image.map(img => {
+                  {resource.images.map(img => {
                     return (
                       <div className={styles["image-wrapper"]} key={img}>
                         <Image src={img} alt={img} width={300} height={300} className={styles.img}/>

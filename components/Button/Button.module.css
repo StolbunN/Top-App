@@ -1,7 +1,7 @@
 .button {
   display: inline-block;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 100%;
   text-align: center;
   padding: 10px;
@@ -44,4 +44,16 @@
 .down {
   transform: rotate(90deg);
   transition: all .3s;
+}
+
+@media (width <= 1440px) {
+  .button {
+    font-size: 16px;
+  }
+}
+
+@media (width <= 440px) {
+  .button {
+    font-size: 14px;
+  }
 }
