@@ -25,26 +25,19 @@ const ProductWithRef = forwardRef(({ product, className, ...props }: ProductProp
     closeReviews: {
       opacity: 0,
       height: 0,
+      overflow: "hidden",
       transition: {
         duration: 0.2
       }
     },
     openReviews: {
       opacity: 1,
+      overflow: "visible",
       height: "auto",
       zIndex: 10,
       position: "relative"
     }
   };
-
-  // ! была идея сделать скролл к окну отзывов только при нажатии на <a href="#ref">...</a>
-  // ! но сейчас работает так же при нажатии на кнопку "Читать отзывы"
-  // const scrollToRef = () => {
-  //   setIsOpenReviews(true);
-  //   dividerRef.current?.scrollIntoView({
-  //     behavior: "smooth",
-  //   });
-  // };
 
   return (
     <div className={styles["product-wrapper"]} ref={ref} {...props}>
