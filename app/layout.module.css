@@ -1,7 +1,7 @@
 .wrapper {
   padding-top: 35px;
   display: grid;
-  grid-template-columns: auto 230px minmax(320px, 1340px) auto;
+  grid-template-columns: auto 230px minmax(320px, 1370px) auto;
   grid-auto-rows: auto 1fr auto;
   column-gap: 30px;
   min-height: 100vh;

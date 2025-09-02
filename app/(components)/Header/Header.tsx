@@ -47,7 +47,7 @@ export function Header({ menuData, className, ...props }: HeaderProps) {
         <Link
           href={"/"}
         >
-          <LogoIcon />
+          <LogoIcon className={styles.logo}/>
         </Link>
         <Burger
           onClick={() => setIsOpened(!isOpened)}
