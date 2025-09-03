@@ -79,6 +79,7 @@
 
 .oldPrice {
   margin-left: 8px;
+  font-weight: 700;
 }
 
 .month {
@@ -154,7 +155,7 @@
 }
 
 .advantages {
-  border-left: 3px solid var(--green);
+  border-left: 3px solid #1DC37E;
   padding-left: 15px;
   margin-bottom: 20px;
 }
