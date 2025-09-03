@@ -7,7 +7,7 @@ import { MenuItem, PageItem } from "@/interfaces/menu.interface";
 import { MenuProps } from "./Menu.props";
 import { firstLevelMenu } from "@/helpers/helpers";
 import Link from "next/link";
-import { useState } from "react";
+import { KeyboardEvent, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 
@@ -64,6 +64,13 @@ export function Menu({ menuData, ...props }: MenuProps) {
     }));
   };
 
+  const openSecondLevelkey = (key: KeyboardEvent, secondCategory: string) => {
+    if(key.code == "Space" || key.code == "Enter") {
+      key.preventDefault();
+      openSecondLevelMenu(secondCategory);
+    }
+  };
+
   const buildFirstLevel = () => {
     return (
       <ul className={styles["first-level__list"]}>
@@ -75,16 +82,11 @@ export function Menu({ menuData, ...props }: MenuProps) {
                 onClick={() => setCategory(menuItem.id)}
                 onMouseEnter={() => setActive(true)}
                 >
-              <div
-                // href={`/${menuItem.route}`}
-                // className={cn(styles["first-level__link"], {
-                //   [styles["first-level__link--active"]]: menuItem.id == category
-                // })}
-                // onClick={() => setCategory(menuItem.id)}
-                // prefetch={active ? null : false}
-                // onMouseEnter={() => setActive(true)}
-              >
-                <div className={styles["first-level__item-content"]}>
+              <div>
+                <div
+                  className={styles["first-level__item-content"]}
+                  tabIndex={0}
+                >
                   {menuItem.icon}
                   <span>{menuItem.name}</span>
                 </div>
@@ -110,14 +112,17 @@ export function Menu({ menuData, ...props }: MenuProps) {
               className={styles["second-level__item"]}
               onClick={() => openSecondLevelMenu(menuItem._id.secondCategory)}
             >
-              <div>{menuItem._id.secondCategory}</div>
+              <div
+                tabIndex={0}
+                onKeyDown={(key: KeyboardEvent) => openSecondLevelkey(key, menuItem._id.secondCategory)}
+              >{menuItem._id.secondCategory}</div>
               <motion.ul
                 layout={true}
                 initial={menuItem.isOpened ? "visible" : "hidden"}
                 animate={menuItem.isOpened ? "visible" : "hidden"}
                 variants={variants}
                 className={styles["third-level__list"]}>
-                {buildThirdLevel(menuItem.pages, route)}
+                {buildThirdLevel(menuItem.pages, route, menuItem.isOpened ?? false)}
               </motion.ul>
             </li>
           );
@@ -126,7 +131,7 @@ export function Menu({ menuData, ...props }: MenuProps) {
     );
   };
 
-  const buildThirdLevel = (pages: PageItem[], route: string) => {
+  const buildThirdLevel = (pages: PageItem[], route: string, isOpened: boolean) => {
     return (
       <>
         {pages.map((page: PageItem) => {
@@ -142,6 +147,7 @@ export function Menu({ menuData, ...props }: MenuProps) {
                 })}
                 prefetch={active ? null : false}
                 onMouseEnter={() => setActive(true)}
+                tabIndex={isOpened ? 0 : -1}
               >{page.category}</Link>
             </motion.li>
           );

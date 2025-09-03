@@ -15,7 +15,6 @@
 }
 
 .logo {
-  margin-bottom: 40px;
   width: 54px;
 }
 
@@ -33,6 +32,9 @@
 
 .menu-left {
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .menu-right {
@@ -107,7 +109,10 @@
 
   .logo {
     width: 44px;
-    margin-bottom: 30px;
+  }
+
+  .menu-left {
+    gap: 30px;
   }
 
   .menu-right {
@@ -164,9 +169,3 @@
     content: "Social "
   }
 }
-
-/*  @media (width < 768px) {
-  .footer {
-    padding: 25px 10px;
-  }
-} */

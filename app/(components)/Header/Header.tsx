@@ -46,6 +46,7 @@ export function Header({ menuData, className, ...props }: HeaderProps) {
       <div className={styles["header-top"]}>
         <Link
           href={"/"}
+          tabIndex={-1}
         >
           <LogoIcon className={styles.logo}/>
         </Link>

@@ -61,8 +61,8 @@ export default function Home() {
                 <Paragraph className={styles.description}>
                   {resource.description}
                 </Paragraph>
-                <Link href={resource.path}>
-                  <Button arrow="right" appearance="primary">Узнать больше</Button>
+                <Link href={resource.path} tabIndex={-1}>
+                  <Button arrow="right" appearance="primary" tabIndex={0}>Узнать больше</Button>
                 </Link>
               </Card>
             );

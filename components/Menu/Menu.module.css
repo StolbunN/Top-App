@@ -33,6 +33,14 @@
   align-items: center;
 }
 
+.first-level__item-content:focus {
+  color: var(--primary);
+}
+
+.first-level__item-content:focus svg {
+  fill: var(--primary);
+}
+
 .second-level__list {
   margin: 14px 0 0 12px;
   padding: 8px 0 8px 32px;
@@ -64,6 +72,7 @@
   font-size: 14px;
   color: #606369;
   text-transform: initial;
+  outline-offset: -1px;
 }
 
 .third-level__link--active {
